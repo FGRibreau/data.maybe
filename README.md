@@ -6,6 +6,14 @@ Data.Maybe
 [![Dependencies Status](https://david-dm.org/folktale/data.maybe.png)](https://david-dm.org/folktale/data.maybe)
 [![stable](http://hughsk.github.io/stability-badges/dist/stable.svg)](http://github.com/hughsk/stability-badges)
 
+## What does this fork do?
+- [x] map act like a flatMap by default, like this:
+
+```javascript
+assert(Maybe.Just(1).map(x => Maybe.Nothing()).getOrElse(2) === 2);
+assert(Maybe.Just(1).map(x => 3).getOrElse(2) === 3);
+assert(Maybe.Just(1).map(x => Maybe.Just(3)).getOrElse(2) === 3);
+```
 
 A structure for values that may not be present, or computations that may
 fail. `Maybe(a)` explicitly models the effects that implicit in `Nullable`

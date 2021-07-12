@@ -35,13 +35,15 @@ Any = sized (-> 10), BigAny
 
 
 module.exports = spec 'Maybe', (o, spec) ->
-  
+
   spec 'Constructors' (o) ->
     o 'Nothing' -> ok (Nothing!is-nothing)
     o 'Just' do
        for-all(Any).satisfy (a) ->
          Just(a).is-just
        .as-test!
+    o 'Just with Nothing' -> ok (Just(Maybe.Nothing()))
+    o 'Just with Maybe' -> ok (Just(Maybe.Just(1).get-or-else(2) is 1))
     o 'fromNullable' ->
        ok (Maybe.fromNullable null).is-nothing
        ok (Maybe.fromNullable 1).is-just
@@ -49,7 +51,7 @@ module.exports = spec 'Maybe', (o, spec) ->
   spec 'Nothings' (o) ->
     o 'ap should propagate' do
        for-all(Any).satisfy (a) ->
-         Nothing!.ap(Just a).is-nothing 
+         Nothing!.ap(Just a).is-nothing
        .as-test!
     o 'map should propagate' ->
        ok Nothing!.map(id).is-nothing
@@ -76,7 +78,7 @@ module.exports = spec 'Maybe', (o, spec) ->
        for-all(Any, Any).satisfy (a, b) ->
          Nothing!.cata(Nothing: (-> a), Just: (-> b)) is a
        .as-test!
-       
+
   spec 'Justs' (o) ->
     o 'toString' do
        for-all(Int).satisfy (a) ->
