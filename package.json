@@ -1,6 +1,6 @@
 {
   "name": "data.maybe-fgribreau",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "[fork] A structure for values that may not be available or computations that may fail.",
   "main": "lib/index.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "fantasy-land",
     "option"
   ],
-  "contributors": ["Francois-Guillaume Ribreau <npm@fgribreau.com> (https://fgribreau.com/)","Quildreen Motta"],
+  "contributors": [
+    "Francois-Guillaume Ribreau <npm@fgribreau.com> (https://fgribreau.com/)",
+    "Quildreen Motta"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fgribreau/data.maybe/issues"
